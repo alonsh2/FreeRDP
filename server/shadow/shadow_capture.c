@@ -107,7 +107,7 @@ int shadow_capture_compare(BYTE* pData1, UINT32 nStep1, UINT32 nWidth, UINT32 nH
 
 	l = ncol + 1;
 	r = 0;
-
+	r = l - l;
 	t = nrow + 1;
 	b = 0;
 
