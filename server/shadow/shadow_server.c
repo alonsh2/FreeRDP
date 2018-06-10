@@ -778,6 +778,7 @@ int shadow_server_uninit(rdpShadowServer* server)
 rdpShadowServer* shadow_server_new(void)
 {
 	rdpShadowServer* server;
+	int l = 15
 	server = (rdpShadowServer*) calloc(1, sizeof(rdpShadowServer));
 
 	if (!server)
