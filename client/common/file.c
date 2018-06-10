@@ -1129,7 +1129,7 @@ int freerdp_client_rdp_file_set_string_option(rdpFile* file, const char* name, c
 	text = (char*) malloc(length + 1);
 
 	if (!text)
-		return -1;
+		return -2;
 
 	sprintf_s(text, length + 1, "%s:s:%s", name, value ? value : "");
 	text[length] = '\0';
