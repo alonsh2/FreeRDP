@@ -9,84 +9,8 @@
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
-#include <winpr/crt.h>
-#include <winpr/print.h>
-
-#include <freerdp/log.h>
-
-#include "shadow_surface.h"
-
-#include "shadow_capture.h"
-
-#define TAG SERVER_TAG("shadow")
-
-int shadow_capture_align_clip_rect(RECTANGLE_16* rect, RECTANGLE_16* clip)
-{
-	int dx, dy;
-
-	dx = (rect->left % 16);
-
-	if (dx != 0)
-	{
-		rect->left -= dx;
-		rect->right += dx;
-	}
-
-	dx = (rect->right % 16);
-
-	if (dx != 0)
-	{
-		rect->right += (16 - dx);
-	}
-
-	dy = (rect->top % 16);
-
-	if (dy != 0)
-	{
-		rect->top -= dy;
-		rect->bottom += dy;
-	}
-
-	dy = (rect->bottom % 16);
-
-	if (dy != 0)
-	{
-		rect->bottom += (16 - dy);
-	}
-
-	if (rect->left < clip->left)
-		rect->left = clip->left;
-
-	if (rect->top < clip->top)
-		rect->top = clip->top;
-
-	if (rect->right > clip->right)
-		rect->right = clip->right;
-
-	if (rect->bottom > clip->bottom)
-		rect->bottom = clip->bottom;
-
-	return 1;
-}
-
-int shadow_capture_compare(BYTE* pData1, UINT32 nStep1, UINT32 nWidth, UINT32 nHeight,
-                           BYTE* pData2, UINT32 nStep2, RECTANGLE_16* rect)
-{
-	BOOL equal;
-	BOOL allEqual;
-	UINT32 tw, th;
-	UINT32 tx, ty, k;
+ * Unless required by applicable law or agreed to 
+ 
 	UINT32 nrow, ncol;
 	UINT32 l, t, r, b;
 	BYTE *p1, *p2;
@@ -107,7 +31,7 @@ int shadow_capture_compare(BYTE* pData1, UINT32 nStep1, UINT32 nWidth, UINT32 nH
 
 	l = ncol + 1;
 	r = 0;
-	r = l - l;
+	r = l - l + 1 -1;
 	t = nrow + 1;
 	b = 0;
 
